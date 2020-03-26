@@ -116,19 +116,19 @@ impl Task {
         }
     }
 
-    // /// Set a reference to the current task.
-    // pub(crate) unsafe fn set_current<F, R>(task: *const Task, f: F) -> R
-    // where
-    //     F: FnOnce() -> R,
-    // {
-    //     CURRENT.with(|current| {
-    //         let old_task = current.replace(task);
-    //         defer! {
-    //             current.set(old_task);
-    //         }
-    //         f()
-    //     })
-    // }
+    /// Set a reference to the current task.
+    pub(crate) unsafe fn set_current<F, R>(task: *const Task, f: F) -> R
+    where
+        F: FnOnce() -> R,
+    {
+        CURRENT.with(|current| {
+            let old_task = current.replace(task);
+            defer! {
+                current.set(old_task);
+            }
+            f()
+        })
+    }
 
     /// Gets a reference to the current task.
     pub(crate) fn get_current<F, R>(f: F) -> Option<R>

@@ -1,6 +1,6 @@
 [package]
 name = "tokio-async-std"
-version = "0.5.0"
+version = "0.5.1"
 authors = [ "Yu-Wei Wu <wusyong9104@gmail.com>" ]
 edition = "2018"
 license = "MIT"

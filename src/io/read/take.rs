@@ -223,21 +223,23 @@ mod tests {
     use crate::io;
     use crate::prelude::*;
 
-    #[tokio::test]
-    async fn test_take_basics() -> std::io::Result<()> {
-        let source: io::Cursor<Vec<u8>> = io::Cursor::new(vec![0, 1, 2, 3, 4, 5, 6, 7, 8]);
+    #[test]
+    fn test_take_basics() -> std::io::Result<()> {
+        crate::task::block_on( async move {
+            let source: io::Cursor<Vec<u8>> = io::Cursor::new(vec![0, 1, 2, 3, 4, 5, 6, 7, 8]);
 
-        let mut buffer = [0u8; 5];
+            let mut buffer = [0u8; 5];
 
-        // read at most five bytes
-        let mut handle = source.take(5);
+            // read at most five bytes
+            let mut handle = source.take(5);
 
-        handle.read(&mut buffer).await?;
-        assert_eq!(buffer, [0, 1, 2, 3, 4]);
+            handle.read(&mut buffer).await?;
+            assert_eq!(buffer, [0, 1, 2, 3, 4]);
 
-        // check that the we are actually at the end
-        assert_eq!(handle.read(&mut buffer).await.unwrap(), 0);
+            // check that the we are actually at the end
+            assert_eq!(handle.read(&mut buffer).await.unwrap(), 0);
 
-        Ok(())
+            Ok(())
+        })
     }
 }

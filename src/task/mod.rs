@@ -128,7 +128,7 @@ cfg_std! {
 }
 
 cfg_default! {
-    //pub use block_on::block_on;
+    pub use block_on::block_on;
     pub use builder::Builder;
     pub use current::current;
     pub use task::Task;
@@ -141,7 +141,7 @@ cfg_default! {
     //use builder::Runnable;
     use task_local::LocalsMap;
 
-    //mod block_on;
+    mod block_on;
     mod builder;
     mod current;
     //mod executor;

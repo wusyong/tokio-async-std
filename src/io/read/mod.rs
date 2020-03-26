@@ -482,23 +482,25 @@ mod tests {
     use crate::io;
     use crate::prelude::*;
 
-    #[tokio::test]
-    async fn test_read_by_ref() -> io::Result<()> {
-        let mut f = io::Cursor::new(vec![0u8, 1, 2, 3, 4, 5, 6, 7, 8]);
-        let mut buffer = Vec::new();
-        let mut other_buffer = Vec::new();
+    #[test]
+    fn test_read_by_ref() -> io::Result<()> {
+        crate::task::block_on( async move {
+            let mut f = io::Cursor::new(vec![0u8, 1, 2, 3, 4, 5, 6, 7, 8]);
+            let mut buffer = Vec::new();
+            let mut other_buffer = Vec::new();
 
-        {
-            let reference = f.by_ref();
+            {
+                let reference = f.by_ref();
 
-            // read at most 5 bytes
-            assert_eq!(reference.take(5).read_to_end(&mut buffer).await?, 5);
-            assert_eq!(&buffer, &[0, 1, 2, 3, 4])
-        } // drop our &mut reference so we can use f again
+                // read at most 5 bytes
+                assert_eq!(reference.take(5).read_to_end(&mut buffer).await?, 5);
+                assert_eq!(&buffer, &[0, 1, 2, 3, 4])
+            } // drop our &mut reference so we can use f again
 
-        // original file still usable, read the rest
-        assert_eq!(f.read_to_end(&mut other_buffer).await?, 4);
-        assert_eq!(&other_buffer, &[5, 6, 7, 8]);
-        Ok(())
+            // original file still usable, read the rest
+            assert_eq!(f.read_to_end(&mut other_buffer).await?, 4);
+            assert_eq!(&other_buffer, &[5, 6, 7, 8]);
+            Ok(())
+        })
     }
 }
