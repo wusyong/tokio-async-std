@@ -55,33 +55,6 @@
 //!
 //! The `await` operator returns the final value produced by the child task.
 //!
-//! ## Configuring tasks
-//!
-//! A new task can be configured before it is spawned via the [`Builder`] type,
-//! which currently allows you to set the name for the child task:
-//!
-//! ```
-//! # #![allow(unused_must_use)]
-//! use async_std::task;
-//!
-//! # async_std::task::block_on(async {
-//! #
-//! task::Builder::new().name("child1".to_string()).spawn(async {
-//!     println!("Hello, world!");
-//! });
-//! #
-//! # })
-//! ```
-//!
-//! ## The `Task` type
-//!
-//! Tasks are represented via the [`Task`] type, which you can get in one of
-//! two ways:
-//!
-//! * By spawning a new task, e.g., using the [`task::spawn`][`spawn`]
-//!   function, and calling [`task`][`JoinHandle::task`] on the [`JoinHandle`].
-//! * By requesting the current task, using the [`task::current`] function.
-//!
 //! ## Task-local storage
 //!
 //! This module also provides an implementation of task-local storage for Rust
@@ -96,24 +69,12 @@
 //! closure. Task-local keys allow only shared access to values, as there would be no
 //! way to guarantee uniqueness if mutable borrows were allowed.
 //!
-//! ## Naming tasks
-//!
-//! Tasks are able to have associated names for identification purposes. By default, spawned
-//! tasks are unnamed. To specify a name for a task, build the task with [`Builder`] and pass
-//! the desired task name to [`Builder::name`]. To retrieve the task name from within the
-//! task, use [`Task::name`].
-//!
-//! [`Arc`]: ../gsync/struct.Arc.html
+//! [`Arc`]: ../sync/struct.Arc.html
 //! [`spawn`]: fn.spawn.html
 //! [`JoinHandle`]: struct.JoinHandle.html
-//! [`JoinHandle::task`]: struct.JoinHandle.html#method.task
 //! [`join`]: struct.JoinHandle.html#method.join
 //! [`panic!`]: https://doc.rust-lang.org/std/macro.panic.html
-//! [`Builder`]: struct.Builder.html
-//! [`Builder::name`]: struct.Builder.html#method.name
-//! [`task::current`]: fn.current.html
 //! [`Task`]: struct.Task.html
-//! [`Task::name`]: struct.Task.html#method.name
 //! [`task_local!`]: ../macro.task_local.html
 //! [`with`]: struct.LocalKey.html#method.with
 
@@ -129,31 +90,10 @@ cfg_std! {
 
 cfg_default! {
     pub use block_on::block_on;
-    //pub use builder::Builder;
-    //pub use current::current;
-    //pub use task::Task;
-    //pub use task_id::TaskId;
-    //pub use tokio::task::JoinHandle;
     pub use sleep::sleep;
-    //pub use spawn::spawn;
     pub use tokio::task::*;
 
-    //use builder::Runnable;
-    //use task_local::LocalsMap;
-
     mod block_on;
-    //mod builder;
-    //mod current;
-    //mod executor;
-    //mod join_handle;
     mod sleep;
-    //mod spawn;
-    //mod spawn_blocking;
-    //mod task;
-    //mod task_id;
-    //mod task_local;
-
-
-    //pub use tokio::task::spawn_blocking;
 
 }
