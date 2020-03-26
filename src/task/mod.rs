@@ -130,28 +130,28 @@ cfg_std! {
 cfg_default! {
     pub use block_on::block_on;
     pub use builder::Builder;
-    pub use current::current;
-    pub use task::Task;
-    pub use task_id::TaskId;
+    //pub use current::current;
+    //pub use task::Task;
+    //pub use task_id::TaskId;
     pub use tokio::task::JoinHandle;
     pub use sleep::sleep;
     pub use spawn::spawn;
-    pub use task_local::{AccessError, LocalKey};
+    pub use tokio::task::{LocalKey};
 
     //use builder::Runnable;
-    use task_local::LocalsMap;
+    //use task_local::LocalsMap;
 
     mod block_on;
     mod builder;
-    mod current;
+    //mod current;
     //mod executor;
     //mod join_handle;
     mod sleep;
     mod spawn;
     //mod spawn_blocking;
-    mod task;
-    mod task_id;
-    mod task_local;
+    //mod task;
+    //mod task_id;
+    //mod task_local;
 
 
     pub use tokio::task::spawn_blocking;

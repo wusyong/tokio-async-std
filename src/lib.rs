@@ -239,6 +239,8 @@ pub use tokio::{main, test};
 
 #[cfg(feature = "std")]
 mod macros;
+#[cfg(feature = "std")]
+pub use tokio::task_local;
 
 cfg_std! {
     pub mod future;

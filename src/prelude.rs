@@ -42,7 +42,7 @@ cfg_std! {
 
 cfg_default! {
     #[doc(no_inline)]
-    pub use crate::task_local;
+    pub use tokio::task_local;
 }
 
 cfg_unstable! {
