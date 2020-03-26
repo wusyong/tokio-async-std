@@ -153,8 +153,7 @@ cfg_default! {
     mod task_id;
     mod task_local;
 
-    #[cfg(any(feature = "unstable", test))]
+
     pub use tokio::task::spawn_blocking;
-    #[cfg(not(any(feature = "unstable", test)))]
-    pub(crate) use tokio::task::spawn_blocking;
+
 }
