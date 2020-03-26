@@ -1,7 +1,6 @@
 use std::net::{Ipv4Addr, Ipv6Addr, SocketAddr, SocketAddrV4, SocketAddrV6};
 
 use async_std::net::ToSocketAddrs;
-use async_std::task;
 
 async fn blocking_resolve<A>(a: A) -> Result<Vec<SocketAddr>, String>
 where

@@ -82,14 +82,6 @@ Creates a task-local value.
 cargo run --example task-local
 ```
 
-##### [Task Name][task-name]
-
-Spawns a named task that prints its name.
-
-```shell
-cargo run --example task-name
-```
-
 ##### [TCP Client][tcp-client]
 
 Connects to Localhost over TCP.
