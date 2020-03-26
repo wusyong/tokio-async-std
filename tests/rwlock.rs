@@ -116,11 +116,9 @@ async fn contention() {
         });
     }
 
-
     for _ in 0..N {
         rx.next().await.unwrap();
     }
-
 }
 
 #[tokio::test]
@@ -169,7 +167,6 @@ async fn writer_and_readers() {
             assert!(*lock >= 0);
         }));
     }
-
 
     // Wait for readers to pass their asserts.
     for r in readers {

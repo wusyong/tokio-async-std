@@ -7,10 +7,10 @@ use async_std::task;
 #[should_panic(expected = "future timed out")]
 async fn io_timeout_timedout() {
         io::timeout(Duration::from_secs(1), async {
-            
+
             let stdin = io::stdin();
             let mut line = String::new();
-            
+
             let _n = stdin.read_line(&mut line).await.unwrap();
 
             Ok(())

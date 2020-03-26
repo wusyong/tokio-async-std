@@ -37,7 +37,10 @@ async fn to_socket_addr_str_u16() {
 
     let a = SocketAddr::V4(SocketAddrV4::new(Ipv4Addr::new(127, 0, 0, 1), 23924));
     #[cfg(not(target_env = "sgx"))]
-    assert!(blocking_resolve(("localhost", 23924)).await.unwrap().contains(&a));
+    assert!(blocking_resolve(("localhost", 23924))
+        .await
+        .unwrap()
+        .contains(&a));
     #[cfg(target_env = "sgx")]
     let _ = a;
 }
@@ -57,7 +60,10 @@ async fn to_socket_addr_str() {
 
     let a = SocketAddr::V4(SocketAddrV4::new(Ipv4Addr::new(127, 0, 0, 1), 23924));
     #[cfg(not(target_env = "sgx"))]
-    assert!(blocking_resolve("localhost:23924").await.unwrap().contains(&a));
+    assert!(blocking_resolve("localhost:23924")
+        .await
+        .unwrap()
+        .contains(&a));
     #[cfg(target_env = "sgx")]
     let _ = a;
 }
@@ -79,5 +85,7 @@ async fn to_socket_addr_string() {
 #[tokio::test]
 #[cfg(not(any(windows, target_os = "openbsd")))]
 async fn to_socket_addr_str_bad() {
-    assert!(blocking_resolve("1200::AB00:1234::2552:7777:1313:34300").await.is_err());
+    assert!(blocking_resolve("1200::AB00:1234::2552:7777:1313:34300")
+        .await
+        .is_err());
 }

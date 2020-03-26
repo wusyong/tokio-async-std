@@ -19,14 +19,10 @@ fn drop_local() {
         static LOCAL: Local;
     }
 
-    
-
-
     // Wait for the task to finish and make sure its task-local has been dropped.
     task::block_on(async {
         // Spawn a task that just touches its task-local.
         LOCAL.scope(Local, async {}).await;
         assert!(DROP_LOCAL.load(Ordering::SeqCst));
-
     });
 }
