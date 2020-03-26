@@ -33,7 +33,7 @@ use crate::task::{Context, Poll};
 /// }
 ///
 /// for t in tasks {
-///     t.await;
+///     t.await.unwrap();
 /// }
 /// assert_eq!(*m.lock().await, 10);
 /// #
@@ -86,7 +86,7 @@ impl<T: ?Sized> Mutex<T> {
     /// task::spawn(async move {
     ///     *m1.lock().await = 20;
     /// })
-    /// .await;
+    /// .await.unwrap();
     ///
     /// assert_eq!(*m2.lock().await, 20);
     /// #
@@ -166,7 +166,7 @@ impl<T: ?Sized> Mutex<T> {
     ///         println!("try_lock failed");
     ///     }
     /// })
-    /// .await;
+    /// .await.unwrap();
     ///
     /// assert_eq!(*m2.lock().await, 20);
     /// #

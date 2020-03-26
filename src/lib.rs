@@ -151,7 +151,7 @@
 //!
 //! Await two futures concurrently, and return a tuple of their output:
 //!
-//! ```
+//! ```ignore
 //! use async_std::prelude::*;
 //!
 //! #[tokio::main]

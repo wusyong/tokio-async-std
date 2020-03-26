@@ -158,15 +158,15 @@
 //! use async_std::sync::{Arc, Mutex};
 //! use async_std::task;
 //!
-//! let m1 = Arc::new(Mutex::new(0));
+//! let m1 = Arc::new(Mutex::new(0u8));
 //! let m2 = m1.clone();
 //!
 //! task::spawn(async move {
-//!     *m2.lock().await = 1;
+//!     *m2.lock().await = 1u8;
 //! })
-//! .await;
+//! .await.unwrap();
 //!
-//! assert_eq!(*m1.lock().await, 1);
+//! assert_eq!(*m1.lock().await, 1u8);
 //! #
 //! # })
 //! ```

@@ -19,7 +19,7 @@ use crate::task::{Builder, JoinHandle};
 ///     1 + 2
 /// });
 ///
-/// assert_eq!(handle.await, 3);
+/// assert_eq!(handle.await.unwrap(), 3);
 /// #
 /// # })
 /// ```
