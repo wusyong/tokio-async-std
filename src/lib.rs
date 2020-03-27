@@ -250,6 +250,7 @@ cfg_std! {
     pub mod stream;
     pub mod sync;
     pub mod task;
+    pub use tokio::runtime;
 }
 
 cfg_default! {

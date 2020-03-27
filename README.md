@@ -16,6 +16,6 @@ Someone asked for it, so here it is. But frankly speaking, both `tokio` and `asy
 Add `tokio-async-std` to `Cargo.toml` as dependency. The main and minor version follow the same semver from `async-std`. Then simply put this and everything else should feel like the same.
 
 ```rust
-use tokio_async_std as async_std;
+use async_std;
 ```
  
