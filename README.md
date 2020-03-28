@@ -5,7 +5,7 @@
 [crates-badge]: https://img.shields.io/crates/v/tokio-async-std
 [crates-url]: https://crates.io/crates/tokio-async-std
 [license-badge]: https://img.shields.io/crates/l/tokio-async-std
-[build-bade]: https://img.shields.io/github/workflow/status/wusyong/tokio-async-std/Main
+[build-bade]: https://img.shields.io/github/workflow/status/wusyong/tokio-async-std/Rust
 ![](https://imgur.com/TuK06ah.png)
 
 Welp, it's an async runtime that provides exact same `async-std` APIs in the front with `tokio` task executor in the back.
