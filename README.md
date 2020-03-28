@@ -1,4 +1,11 @@
 # tokio-async-std
+
+[![][crates-badge]][crates-url] ![][license-badge] ![][build-bade]
+
+[crates-badge]: https://img.shields.io/crates/v/tokio-async-std
+[crates-url]: https://crates.io/crates/tokio-async-std
+[license-badge]: https://img.shields.io/crates/l/tokio-async-std
+[build-bade]: https://img.shields.io/github/workflow/status/wusyong/tokio-async-std/Main
 ![](https://imgur.com/TuK06ah.png)
 
 Welp, it's an async runtime that provides exact same `async-std` APIs in the front with `tokio` task executor in the back.
@@ -11,9 +18,9 @@ Above has said it all. This is a fork of `async-std` but replace the executor wi
 
 Someone asked for it, so here it is. But frankly speaking, both `tokio` and `async-std` already have comprehensive functionalities. Just choose the one you are fond of shouldn't get anything wrong. This is the one for people who **really really really** want to use interface of `async-std` but also need to use crates from `tokio` ecosystem.
 
-## Usage
+## How do I use it?
 
-Add `tokio-async-std` to `Cargo.toml` as dependency. The main and minor version follow the same semver from `async-std`. Then simply put this and everything else should feel like the same.
+Add `tokio-async-std` to `Cargo.toml` as dependency. The main and minor version follow the same semver from `async-std`. Then simply put import it and everything else should feel like the same. The library name is also same.
 
 ```rust
 use async_std;

@@ -235,7 +235,7 @@ mod utils;
 #[cfg(feature = "attributes")]
 #[cfg_attr(feature = "docs", doc(cfg(attributes)))]
 #[doc(inline)]
-pub use tokio::{main, test};
+pub use tokio_async_attributes::{main, test};
 
 #[cfg(feature = "std")]
 mod macros;
