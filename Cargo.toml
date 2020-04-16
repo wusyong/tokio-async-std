@@ -1,6 +1,6 @@
 [package]
 name = "tokio-async-std"
-version = "1.5.2"
+version = "1.5.3"
 authors = [ "Yu-Wei Wu <wusyong9104@gmail.com>" ]
 edition = "2018"
 license = "MIT"
@@ -58,7 +58,7 @@ once_cell = { version = "1.2.0", optional = true }
 pin-project-lite = { version = "0.1.2", optional = true }
 pin-utils = { version = "0.1.0-alpha.4", optional = true }
 slab = { version = "0.4.2", optional = true }
-tokio = { version = "0.2", default-features = false, features = ["blocking", "time", "rt-threaded", "rt-util"], optional = true } 
+tokio = { version = "0.2.18", default-features = false, features = ["blocking", "time", "rt-threaded", "rt-util"], optional = true } 
 tokio-async-attributes = { version = "1.0.0", optional = true } 
 
 [dev-dependencies]
